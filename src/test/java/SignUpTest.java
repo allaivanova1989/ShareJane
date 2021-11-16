@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class SignUpTest {
     @Test
-    public void ZipCodeShouldAccept5Digits() {
+    public void zipCodeShouldAccept5Digits() {
         // Открытие страницы https://www.sharelane.com/cgi-bin/register.py
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -31,7 +31,7 @@ public class SignUpTest {
     }
 
     @Test
-    public void ZipCodeShouldAccept6Digits() {
+    public void zipCodeShouldAccept6Digits() {
         // Открытие страницы https://www.sharelane.com/cgi-bin/register.py
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -54,7 +54,7 @@ public class SignUpTest {
     }
 
     @Test
-    public void ZipCodeShouldAccept4Digits() {
+    public void zipCodeShouldAccept4Digits() {
         // Открытие страницы https://www.sharelane.com/cgi-bin/register.py
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
