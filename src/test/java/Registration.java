@@ -40,7 +40,29 @@ public class Registration {
         registerButton.click();
 //        // Убедиться что регистрация произошла
         boolean isDisplayed = driver.findElement(By.cssSelector(".confirmation_message")).isDisplayed();
-        Assert.assertTrue(true, "We have a bug. Account was not created.");
+        Assert.assertTrue(isDisplayed, "We have a bug. Account was not created.");
+
+    }
+
+    @Test
+    public void emptyInput() {
+        WebElement firstNameInput = driver.findElement(By.name("first_name"));
+        firstNameInput.sendKeys("");
+        WebElement lastNameinput = driver.findElement(By.name("last_name"));
+        lastNameinput.sendKeys("");
+        WebElement emailInput = driver.findElement(By.name("email"));
+        emailInput.sendKeys("");
+        WebElement passwordInput = driver.findElement(By.name("password1"));
+        passwordInput.sendKeys("");
+        WebElement confirmPasswordInput = driver.findElement(By.name("password2"));
+        confirmPasswordInput.sendKeys("");
+        // нажимаем кнопку register
+        WebElement registerButton = driver.findElement(By.cssSelector("[value=Register]"));
+        registerButton.click();
+        // Убедиться что регистрация не произошла
+        boolean isDisplayed = driver.findElement(By.cssSelector(".error_message")).isDisplayed();
+        Assert.assertTrue(isDisplayed, "We have a bug. The registration form is not working correctly ");
+
 
     }
 }
