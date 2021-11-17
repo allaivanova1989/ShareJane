@@ -7,7 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Registration {
+public class RegistrationTest {
     WebDriver driver;
 
     @BeforeTest
@@ -106,13 +106,17 @@ public class Registration {
 
     @Test
     public void passwordVisibilityProtection() {
-        try {
-            boolean passwordField = driver.findElement(By.cssSelector("body > center > table > tbody > tr:nth-child(5) > " +
-                    "td > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(4) > td:nth-child(2) > input[type=password]")).isDisplayed();
-        } catch (Exception e) {
+        WebElement firstNameInput = driver.findElement(By.name("first_name"));
+        firstNameInput.sendKeys("Alex");
+        WebElement emailInput = driver.findElement(By.name("email"));
+        emailInput.sendKeys("baby20086");
+        WebElement passwordInput = driver.findElement(By.name("password1"));
+        passwordInput.sendKeys("123456789");
 
-            Assert.fail("We have a bug. The password is not hidden");
-        }
+        Assert.assertEquals(passwordInput.getAttribute("type"), "password", "We have a bug.The password is not secret. ");
+
+
+
 
     }
 }
