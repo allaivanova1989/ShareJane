@@ -65,4 +65,23 @@ public class Registration {
 
 
     }
+
+    @Test
+    public void inputInvalidEmail() {
+        WebElement firstNameInput = driver.findElement(By.name("first_name"));
+        firstNameInput.sendKeys("Alex");
+        WebElement emailInput = driver.findElement(By.name("email"));
+        emailInput.sendKeys("baby20086");
+        WebElement passwordInput = driver.findElement(By.name("password1"));
+        passwordInput.sendKeys("123456789");
+        WebElement confirmPasswordInput = driver.findElement(By.name("password2"));
+        confirmPasswordInput.sendKeys("123456789");
+        // нажимаем кнопку register
+        WebElement registerButton = driver.findElement(By.cssSelector("[value=Register]"));
+        registerButton.click();
+        // Убедиться что регистрация не произошла
+        boolean isDisplayed = driver.findElement(By.cssSelector(".error_message")).isDisplayed();
+        Assert.assertEquals(driver.findElement(By.cssSelector(".error_message")).getText(), "Oops, error on page. Some of your fields have invalid data or email was previously used","We have a bug. The registration form is not working correctly ");
+
+    }
 }
